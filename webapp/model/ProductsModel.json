@@ -1,0 +1,29 @@
+
+{
+  "products": [
+    {
+      "ProductID": "P001",
+      "ProductName": "Laptop",
+      "SupplierID": "S001",
+      "CategoryID": "C001",
+      "QuantityPerUnit": "1 unit",
+      "UnitPrice": 1200.00,
+      "UnitsInStock": 50,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 5,
+      "Discontinued": false
+    },
+    {
+      "ProductID": "P002",
+      "ProductName": "Smartphone",
+      "SupplierID": "S002",
+      "CategoryID": "C002",
+      "QuantityPerUnit": "1 unit",
+      "UnitPrice": 800.00,
+      "UnitsInStock": 100,
+      "UnitsOnOrder": 20,
+      "ReorderLevel": 10,
+      "Discontinued": false
+    }
+  ]
+}

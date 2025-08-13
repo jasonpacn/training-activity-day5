@@ -1,0 +1,68 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapips.training.jsonbinding.controller.JSONBinding">
+    <Page id="page" title="{i18n>title}">
+    
+    <Panel xmlns="sap.m" id="panel01" headerText="Data Binding Basics" class="sapUiResponsiveMargin" width="auto">
+        <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0">
+        
+            <sap.ui.layout.form:content>
+                <Label text="EID" id="lblEID"/>
+                <Input width="100%" id="txtEID"/>
+        
+                <Label text="Enabled" id="lblEnabled"/>      
+                <CheckBox xmlns="sap.m" selected="false" id="cbEnabled"/>
+            </sap.ui.layout.form:content>
+        
+        </sap.ui.layout.form:SimpleForm>
+    </Panel>
+    <Panel xmlns="sap.m" id="panel02" headerText="Address Details" class="sapUiResponsiveMargin" width="auto">
+        <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form1">
+        
+            <sap.ui.layout.form:content>
+                <Label text="Address" id="lblAddress"/>
+                <Input width="100%" id="txtAddress"/>
+
+                <Link xmlns="sap.m" href="https://ui5.sap.com" text="Link Text" id="link0"/>
+
+                <Label text="Sales Amount" id="lblSA"/>
+                <Input width="100%" id="txtSA"/>
+
+
+            </sap.ui.layout.form:content>
+        
+        </sap.ui.layout.form:SimpleForm>
+        
+    </Panel>
+    <Panel xmlns="sap.m" id="panel03" headerText="Aggregation Binding" class="sapUiResponsiveMargin" width="auto">
+
+    <content>
+        <List noDataText="Drop list items here" id="list0">
+            <items>
+                <StandardListItem type="Navigation" title="List Item 1" description="Description text" icon="sap-icon://picture" id="item0"/>
+            </items>
+        </List>
+    </content>  
+    </Panel>
+
+    <Panel xmlns="sap.m" id="panel04" headerText="Product Details" class="sapUiResponsiveMargin" width="auto">
+        <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form2">
+            <Label text="Product ID" id="lblProductID"/>
+            <Input width="100%" id="txtProductID"/>
+
+            <Label text="Product Name" id="lblProductName"/>
+            <Input width="100%" id="txtProductName"/>
+
+            <Label text="Quantity Per Unit" id="lblQuantity"/>
+            <Input width="100%" id="txtQuantity"/>
+
+            <Label text="Unit Price" id="lblUnitPrice"/>
+            <Input width="100%" id="txtUnitPrice"/>
+
+            <Label text="Units in Stock" id="lblUnitsInStock"/>
+            <Input width="100%" id="txtUnitsInStock"/>
+
+            <Label text="Discontinued" id="lblDiscontinued"/>
+            <Input width="100%" id="txtDiscontinued"/>
+        </sap.ui.layout.form:SimpleForm>
+    </Panel>
+    </Page>
+</mvc:View>
