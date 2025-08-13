@@ -1,28 +1,39 @@
-
 {
-  "products": [
+  "Product": [
     {
-      "ProductID": "P001",
-      "ProductName": "Laptop",
-      "SupplierID": "S001",
-      "CategoryID": "C001",
-      "QuantityPerUnit": "1 unit",
-      "UnitPrice": 1200.00,
-      "UnitsInStock": 50,
-      "UnitsOnOrder": 10,
-      "ReorderLevel": 5,
+      "ProductID": 1,
+      "ProductName": "Product 1",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": "10 boxes x 20 bags",
+      "UnitPrice": 18.0,
+      "UnitsInStock": 39,
+      "UnitsOnOrder": 0,
+      "ReorderLevel": 10,
       "Discontinued": false
     },
     {
-      "ProductID": "P002",
-      "ProductName": "Smartphone",
-      "SupplierID": "S002",
-      "CategoryID": "C002",
-      "QuantityPerUnit": "1 unit",
-      "UnitPrice": 800.00,
-      "UnitsInStock": 100,
-      "UnitsOnOrder": 20,
-      "ReorderLevel": 10,
+      "ProductID": 2,
+      "ProductName": "Product 2",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": "24 - 12 oz bottles",
+      "UnitPrice": 19.0,
+      "UnitsInStock": 17,
+      "UnitsOnOrder": 40,
+      "ReorderLevel": 25,
+      "Discontinued": false
+    },
+    {
+      "ProductID": 3,
+      "ProductName": "Product 3",
+      "SupplierID": 1,
+      "CategoryID": 2,
+      "QuantityPerUnit": "12 - 550 ml bottles",
+      "UnitPrice": 10.0,
+      "UnitsInStock": 13,
+      "UnitsOnOrder": 70,
+      "ReorderLevel": 25,
       "Discontinued": false
     }
   ]
