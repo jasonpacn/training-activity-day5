@@ -8,15 +8,13 @@ sap.ui.define([
     return Controller.extend("sapips.training.jsonbinding.controller.JSONBinding", {
         formatter: formatter,
 
+        
         onInit: function () {
-            var oProductModel = new JSONModel("model/ProductModel.json");
-            this.getView().setModel(oProductModel);
-
             var oInfoModel = new JSONModel({
                 EID: "",
                 Enabled: false,
                 Address: {
-                    Street: "River Street",
+                    Street: "Riverside Street",
                     City: "Mandaue City",
                     Zip: "6014",
                     Country: "Philippines"
@@ -25,16 +23,39 @@ sap.ui.define([
                 CurrencyCode: "USD"
             });
             this.getView().setModel(oInfoModel, "info");
+
+            //var oProductModel = new JSONModel("models/Products.json");
+            //this.getView().setModel(oProductModel, "products"); 
         },
 
 
         onItemPress: function (oEvent) {
-            var oSelectedItem = oEvent.getSource();
-            var oContext = oSelectedItem.getBindingContext();
-            var oData = oContext.getObject();
+            /*var oSelectedItem = oEvent.getSource();
+            var oContext = oSelectedItem.getBindingContext("products");
+            const sPath = oContext.getPath();
+            const oProductDetailPanel = this.byId("productDetailsPanel");
+            oProductDetailPanel.bindElement({ path: sPath, model: "products" });
+            //var oData = oContext.getObject();*/
 
-            var oDetailModel = new JSONModel(oData);
-            this.getView().setModel(oDetailModel, "productDetail");
+            //var oDetailModel = new JSONModel(oData);
+            //this.getView().setModel(oDetailModel, "productDetail");         
+            
+            
+
+            var oSelectedItem = oEvent.getSource();
+            var oContext = oSelectedItem.getBindingContext("products");
+
+            if (oContext) {
+                var sPath = oContext.getPath();
+                var oProductDetailPanel = this.byId("productDetailsPanel");
+
+                // Bind the panel to the selected product's context
+                oProductDetailPanel.bindElement({
+                    path: sPath,
+                    model: "products"
+                });
+            }
+
         }
     });
 });
