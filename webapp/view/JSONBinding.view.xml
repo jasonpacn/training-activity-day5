@@ -45,7 +45,7 @@
     </Panel>
     <Panel xmlns="sap.m" id="aggregationBindingPanel" headerText="Aggregation Binding" class="sapUiResponsiveMargin" width="auto">
     <content>
-		<List id="list001" items="{products>/Products}">
+		<List id="list001" headerText="{i18n>productListTitle}" items="{products>/Products}">
 			<items>
 				<ObjectListItem
                     id="objList001"
@@ -54,24 +54,15 @@
 					title="{products>ProductName}"
 					number="{
 						parts: [
-							{path: 'products>UnitPrice'},
-							{path: '/currencyCode'}
+							{path: 'products>UnitPrice'}
 						],
 						type: 'Currency',
 						formatOptions: { showMeasure: false }
 					}"
 					numberUnit="{/currencyCode}">
 					<attributes>
-						<ObjectAttribute id="objAttribute001" text="{products>QuantityPerUnit}"/>
-						<ObjectAttribute id="objAttribute002" title="{i18n>stockValue}"
-							text="{
-								parts: [
-									{path: 'products>UnitPrice'},
-									{path: 'products>UnitsInStock'},
-									{path: '/currencyCode'}
-								],
-								formatter: '.formatStockValue'
-							}"/>
+						<ObjectAttribute id="objAttribute001" title="{i18n>UnitPrice}" text="{products>QuantityPerUnit}"/>
+                        <ObjectAttribute id="objAttribute002" title="{i18n>stockValue}" text="{products>UnitsInStock}"/>
 					</attributes>
 				</ObjectListItem>
 			</items>
@@ -95,10 +86,10 @@
                 <Label text="{i18n>UnitPrice}" id="lblUnitPrice"/>
                 <Input width="100%" value="{products>/UnitPrice}" id="txtUnitPrice"/>
 
-                <Label text="Units in Stock" id="lblUnitsInStock"/>
+                <Label text="{i18n>UnitsInStock}" id="lblUnitsInStock"/>
                 <Input width="100%" value="{products>/UnitsInStock}" id="txtUnitsInStock"/>
 
-                <Label text="{i18n>UnitsInStock}" id="lblDiscontinued"/>
+                <Label text="{i18n>Discontinued}" id="lblDiscontinued"/>
                 <Input width="100%" value="{products>/Discontinued}" id="txtDiscontinued"/>
             </sap.ui.layout.form:content>
         </sap.ui.layout.form:SimpleForm>
