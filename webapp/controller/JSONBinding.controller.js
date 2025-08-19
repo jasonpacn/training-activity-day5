@@ -9,7 +9,7 @@
             formatter: formatter,
 
             onInit() {
-                const infoData = {
+                let infoData = {
                     Eid: "jason.patigayon",
                     Enabled: true,
                     Address: {
@@ -22,25 +22,27 @@
                     CurrencyCode: "PHP"
                 };
 
-                const infoModel = new JSONModel();
+                let infoModel = new JSONModel();
                 infoModel.setData(infoData);
                 this.getView().setModel(infoModel, "info");
 
-                const productListModel = new JSONModel("/model/Products.json");
+                let sProductsPath = sap.ui.require.toUrl("sapips/training/jsonbinding/model/Products.json");
+                let productListModel = new JSONModel(sProductsPath);
                 this.getView().setModel(productListModel, "products");
             },
 
             onSelectProduct(oEvent) {
-                const list = oEvent.getSource();
-                const selectedItem = list.getSelectedItem();
-                const context = selectedItem.getBindingContext("products");
+                let selectedItem = oEvent.getParameter("listItem");
+                let context = selectedItem.getBindingContext("products");
 
-                const path = context.getPath();
-                const form = this.byId("productDetailsPanel");
-                form.bindElement({
-                    path: path,
-                    model: "products"
-                });
+                if (context) {
+                    let path = context.getPath();
+                    let form = this.byId("productDetailsPanel");
+                    form.bindElement({
+                        path: path,
+                        model: "products"
+                    });
+                }
             }
         });
     });

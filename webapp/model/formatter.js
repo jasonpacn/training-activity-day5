@@ -7,13 +7,13 @@ function (mobileLibrary, Currency) {
 
     return {
         formatMail: function(sEid) {
-            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            let oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             return "mailto:" + sEid + oBundle.getText("domain")
                 + "?subject=" + encodeURIComponent(oBundle.getText("mailSubject", [sEid]))
                 + "&body=" + encodeURIComponent(oBundle.getText("mailBody"));
         },
         formatStockValue: function(fUnitPrice, iStockLevel, sCurrCode) {
-            var oCurrency = new Currency();
+            let oCurrency = new Currency();
             return oCurrency.formatValue([fUnitPrice * iStockLevel, sCurrCode], "string");
         }
     };

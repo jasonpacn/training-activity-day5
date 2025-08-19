@@ -43,11 +43,13 @@
     </Panel>
     <Panel xmlns="sap.m" id="aggregationBindingPanel" headerText="Aggregation Binding" class="sapUiResponsiveMargin" width="auto">
     <content>
-		<List id="list001" headerText="{i18n>productListTitle}" items="{products>/Products}">
+		<List id="list001" 
+            items="{products>/Products}" 
+            mode="SingleSelectMaster"
+            selectionChange=".onSelectProduct">
 			<items>
 				<ObjectListItem
                     id="objList001"
-					press=".onItemPress"
 					type="Active"
 					title="{products>ProductName}"
 					number="{
@@ -57,7 +59,7 @@
 						type: 'sap.ui.model.type.Currency',
 						formatOptions: { showMeasure: false }
 					}"
-					numberUnit="{/currencyCode}">
+					numberUnit="{info>/CurrencyCode}">
 					<attributes>
 						<ObjectAttribute id="objAttribute001" title="{i18n>UnitPrice}" text="{products>QuantityPerUnit}"/>
                         <ObjectAttribute id="objAttribute002" title="{i18n>stockValue}" text="{products>UnitsInStock}"/>
@@ -73,22 +75,22 @@
         <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form2">
             <sap.ui.layout.form:content>
                 <Label text="{i18n>ProductID}" id="lblProductID"/>
-                <Input width="100%" value="{products>/ProductID}" id="txtProductID"/>
+                <Input width="100%" value="{products>ProductID}" id="txtProductID"/>
 
                 <Label text="{i18n>ProductName}" id="lblProductName"/>
-                <Input width="100%" value="{products>/ProductName}" id="txtProductName"/>
+                <Input width="100%" value="{products>ProductName}" id="txtProductName"/>
 
                 <Label text="{i18n>QuantityPerUnit}" id="lblQuantity"/>
-                <Input width="100%" value="{products>/QuantityPerUnit}" id="txtQuantity"/>
+                <Input width="100%" value="{products>QuantityPerUnit}" id="txtQuantity"/>
 
                 <Label text="{i18n>UnitPrice}" id="lblUnitPrice"/>
-                <Input width="100%" value="{products>/UnitPrice}" id="txtUnitPrice"/>
+                <Input width="100%" value="{products>UnitPrice}" id="txtUnitPrice"/>
 
                 <Label text="{i18n>UnitsInStock}" id="lblUnitsInStock"/>
-                <Input width="100%" value="{products>/UnitsInStock}" id="txtUnitsInStock"/>
+                <Input width="100%" value="{products>UnitsInStock}" id="txtUnitsInStock"/>
 
                 <Label text="{i18n>Discontinued}" id="lblDiscontinued"/>
-                <Input width="100%" value="{products>/Discontinued}" id="txtDiscontinued"/>
+                <Input width="100%" value="{products>Discontinued}" id="txtDiscontinued"/>
             </sap.ui.layout.form:content>
         </sap.ui.layout.form:SimpleForm>
     </Panel>
