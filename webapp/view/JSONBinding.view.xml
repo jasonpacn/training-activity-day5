@@ -6,7 +6,7 @@
         
             <sap.ui.layout.form:content>
                 <Label text="EID" id="lblEID"/>
-                <Input width="100%" id="txtEID"/>
+                <Input width="100%" id="txtEID" value="{info>/Eid}"/>
         
                 <Label text="Enabled" id="lblEnabled"/>      
                 <CheckBox xmlns="sap.m"  selected="{info>/Enabled}" id="cbEnabled" enabled="true"/>
@@ -23,11 +23,9 @@
                 class="sapUiSmallMarginBottom" 
                 id="txtAddress"/>
                 
-                <Link 
-                text="Send Email" 
-                href="{ path: 'info>/EID', formatter: '.formatter.formatMail' }"
-                class="sapUiSmallMarginBegin" 
-                id="linkEmail"/>
+				<Link id="link01" 
+					href="{ path: 'info>/Eid', formatter: '.formatter.formatMail'}"
+					text="{i18n>sendEmail}"/>
 
                 <Label text="Sales Amount" id="lblSA"/>
                 <Input 
@@ -56,7 +54,7 @@
 						parts: [
 							{path: 'products>UnitPrice'}
 						],
-						type: 'Currency',
+						type: 'sap.ui.model.type.Currency',
 						formatOptions: { showMeasure: false }
 					}"
 					numberUnit="{/currencyCode}">

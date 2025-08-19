@@ -1,44 +1,46 @@
-sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel",
-    "sapips/training/jsonbinding/model/formatter"
-], (Controller, JSONModel, formatter) => {
-    "use strict";
+    sap.ui.define([
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/model/json/JSONModel",
+        "sapips/training/jsonbinding/model/formatter"
+    ], (Controller, JSONModel, formatter) => {
+        "use strict";
 
-    return Controller.extend("sapips.training.jsonbinding.controller.JSONBinding", {
-        formatter: formatter,
+        return Controller.extend("sapips.training.jsonbinding.controller.JSONBinding", {
+            formatter: formatter,
 
-        onInit: function () {
-            var oInfoModel = new JSONModel({
-                EID: "",
-                Enabled: false,
-                Address: {
-                    Street: "Riverside Street",
-                    City: "Mandaue City",
-                    Zip: "6014",
-                    Country: "Philippines"
-                },
-                SalesAmount: 1000,
-                CurrencyCode: "USD"
-            });
-            this.getView().setModel(oInfoModel, "info");
+            onInit() {
+                const infoData = {
+                    Eid: "jason.patigayon",
+                    Enabled: true,
+                    Address: {
+                        Street: "Don Sergio Street",
+                        City: "Mandaue",
+                        Zip: "6014",
+                        Country: "Philippines"
+                    },
+                    SalesAmount: "1000",
+                    CurrencyCode: "PHP"
+                };
 
-            //var oProductModel = new JSONModel("models/Products.json");
-            //this.getView().setModel(oProductModel, "products");
-        },
+                const infoModel = new JSONModel();
+                infoModel.setData(infoData);
+                this.getView().setModel(infoModel, "info");
 
+                const productListModel = new JSONModel("/model/Products.json");
+                this.getView().setModel(productListModel, "products");
+            },
 
-        onItemPress: function (oEvent) {
-            var oSelectedItem = oEvent.getSource();
-            var oContext = oSelectedItem.getBindingContext("products");
-            const sPath = oContext.getPath();
-            const oProductDetailPanel = this.byId("productDetailsPanel");
-            oProductDetailPanel.bindElement({ path: sPath, model: "products" });
-            
-            //var oData = oContext.getObject();
-            //var oDetailModel = new JSONModel(oData);
-            //this.getView().setModel(oDetailModel, "productDetail");
+            onSelectProduct(oEvent) {
+                const list = oEvent.getSource();
+                const selectedItem = list.getSelectedItem();
+                const context = selectedItem.getBindingContext("products");
 
-        }
+                const path = context.getPath();
+                const form = this.byId("productDetailsPanel");
+                form.bindElement({
+                    path: path,
+                    model: "products"
+                });
+            }
+        });
     });
-});
