@@ -1,24 +1,24 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapips.training.jsonbinding.controller.JSONBinding">
     <Page id="page" title="{i18n>title}">
     
-    <Panel xmlns="sap.m" id="panel01" headerText="Data Binding Basics" class="sapUiResponsiveMargin" width="auto">
+    <Panel xmlns="sap.m" id="panel01" headerText="{i18n>panel1}" class="sapUiResponsiveMargin" width="auto">
         <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0">
         
             <sap.ui.layout.form:content>
-                <Label text="EID" id="lblEID"/>
+                <Label text="{i18n>eid}" id="lblEID"/>
                 <Input width="100%" id="txtEID" value="{info>/Eid}"/>
         
-                <Label text="Enabled" id="lblEnabled"/>      
+                <Label text="{i18n>enabled}" id="lblEnabled"/>      
                 <CheckBox xmlns="sap.m"  selected="{info>/Enabled}" id="cbEnabled" enabled="true"/>
             </sap.ui.layout.form:content>
         
         </sap.ui.layout.form:SimpleForm>
     </Panel>
-    <Panel xmlns="sap.m" id="panel02" headerText="Address Details" class="sapUiResponsiveMargin" width="auto">
+    <Panel xmlns="sap.m" id="panel02" headerText="{i18n>panel2}" class="sapUiResponsiveMargin" width="auto">
         <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form1">
         
             <sap.ui.layout.form:content>
-                <Label text="Address" id="lblAddress"/>
+                <Label text="{i18n>address}" id="lblAddress"/>
                 <Text text="{info>/Address/Street} {info>/Address/Zip} {info>/Address/City} {info>/Address/Country}" 
                 class="sapUiSmallMarginBottom" 
                 id="txtAddress"/>
@@ -27,7 +27,7 @@
 					href="{ path: 'info>/Eid', formatter: '.formatter.formatMail'}"
 					text="{i18n>sendEmail}"/>
 
-                <Label text="Sales Amount" id="lblSA"/>
+                <Label text="{i18n>salesAmount}" id="lblSA"/>
                 <Input 
                 width="100%" 
                 class="sapUiSmallMarginBegin" 
@@ -41,7 +41,7 @@
         </sap.ui.layout.form:SimpleForm>
         
     </Panel>
-    <Panel xmlns="sap.m" id="aggregationBindingPanel" headerText="Aggregation Binding" class="sapUiResponsiveMargin" width="auto">
+    <Panel xmlns="sap.m" id="aggregationBindingPanel" headerText="{i18n>panel3}" class="sapUiResponsiveMargin" width="auto">
     <content>
 		<List id="list001" 
             items="{products>/Products}" 
@@ -54,16 +54,26 @@
 					title="{products>ProductName}"
 					number="{
 						parts: [
-							{path: 'products>UnitPrice'}
-						],
+                            {path: 'products>UnitPrice'},
+                            {path: 'info>/CurrencyCode'}
+                        ],
 						type: 'sap.ui.model.type.Currency',
 						formatOptions: { showMeasure: false }
 					}"
 					numberUnit="{info>/CurrencyCode}">
 					<attributes>
-						<ObjectAttribute id="objAttribute001" title="{i18n>UnitPrice}" text="{products>QuantityPerUnit}"/>
-                        <ObjectAttribute id="objAttribute002" title="{i18n>stockValue}" text="{products>UnitsInStock}"/>
-					</attributes>
+						<ObjectAttribute id="objAttribute001" title="{i18n>quantity}" text="{products>QuantityPerUnit}"/>
+                        <ObjectAttribute 
+                        id="objAttribute002"
+                        title="{i18n>stockValue}"
+                        text="{
+                            parts: [
+                                {path: 'products>UnitPrice'}, 
+                                {path: 'products>UnitsInStock'}
+                            ],
+                            formatter: '.formatter.formatStockValue'
+                        }"/>
+                                </attributes>
 				</ObjectListItem>
 			</items>
 		</List>
@@ -71,7 +81,7 @@
     </content>  
     </Panel>
 
-    <Panel xmlns="sap.m" id="productDetailsPanel" headerText="Product Details" class="sapUiResponsiveMargin" width="auto">
+    <Panel xmlns="sap.m" id="productDetailsPanel" headerText="{i18n>panel4}" class="sapUiResponsiveMargin" width="auto">
         <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form2">
             <sap.ui.layout.form:content>
                 <Label text="{i18n>ProductID}" id="lblProductID"/>
